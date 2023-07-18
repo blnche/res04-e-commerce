@@ -11,7 +11,7 @@ require 'models/Product.php';
 require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';
 require 'managers/CategoryManager.php';
-require 'managers/ProductsManager.php';
+require 'managers/ProductManager.php';
 
 require 'controllers/AbstractController.php';
 require 'controllers/UserController.php';
