@@ -11,10 +11,11 @@ require 'models/Products.php';
 require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';
 require 'managers/CategoryManager.php';
+require 'managers/ProductsManager.php';
 
 require 'controllers/AbstractController.php';
 require 'controllers/UserController.php';
-require 'controllers/CategoryController.php';
+require 'controllers/HomepageController.php';
 
 if(isset($_GET["route"]))
 {
