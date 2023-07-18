@@ -11,7 +11,7 @@ abstract class AbstractManager
       $port = "3306";
       $username = "kevinqeraca";
       $password = "666a53abc522d5ba40fc46882ee5e430";
-      $connexionString = "mysql:host=$host;port=$port;charset=utf-8;dbname=$dbName";
+      $connexionString = "mysql:host=$host;port=$port;charset=utf8;dbname=$dbName";
       
       $this->db = new PDO(
           $connexionString,
