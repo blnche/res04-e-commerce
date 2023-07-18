@@ -8,7 +8,7 @@ class CategoryController extends AbstractController{
     }
     
     public function displayAllCategory (){
-        $categories = $categoryManager->getAllCategories();
+        $categories = $this->manager->index();
         $this->render('views/homepage.phtml', ['categories'=> $categories]);
     }
 }
