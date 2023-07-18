@@ -1,0 +1,63 @@
+<?php
+
+class Adresse
+{
+    private ?int $id;
+    private int $user_id;
+    private string $street;
+    private string $zip;
+    private string $city;
+    private string $country;
+
+    public function __construct(int $user_id, string $street, string $zip, string $city, string $country)
+    {
+        $this->user_id = $user_id;
+        $this->street = $street;
+        $this->zip = $zip;
+        $this->city = $city;
+        $this->country = $country;
+    }
+
+    public function getId() : int
+    {
+       return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+       $this->id = $id;
+    }
+
+    public function getStreet() : string
+    {
+       return $this->street;
+    }
+
+    public function setStreet(int $street)
+    {
+       $this->street = $street;
+    }
+
+    public function getZip() : string
+    {
+       return $this->zip;
+    }
+
+    public function setId(int $id)
+    {
+       $this->id = $id;
+    }
+
+    public function getUserId() : int
+    {
+       return $this->user_id;
+    }
+
+    public function setUserId(int $user_id)
+    {
+       $this->user_id = $user_id;
+    }
+
+
+}
+?>
