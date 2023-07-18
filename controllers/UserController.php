@@ -32,20 +32,10 @@ class UserController extends AbstractController
         {
             $user = new User($_POST["firstName"], $_POST["lastName"], $_POST["email"], $_POST["password"]);
             $this->manager->insertUser($user);
-
+            $this->render("views/user/login.phtml", []);
         }else{
             $this->render("views/user/register.phtml", []);
         }
-    }
-
-    public function edit()
-    {
-
-    }
-
-    public function remove()
-    {
-
     }
 }
 ?>
