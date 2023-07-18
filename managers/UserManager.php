@@ -24,7 +24,8 @@ class UserManager extends AbstractManager {
         $parameters = ['email' => $email];
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
-        return $user;
+        $userInstance = new User($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+        return $userInstance;
     }
     
     public function insertUser(User $user)
@@ -39,6 +40,8 @@ class UserManager extends AbstractManager {
         ];
         $query->execute($parameters);
     }
+    
+
     
     public function editUser(User $user) : void
     {
