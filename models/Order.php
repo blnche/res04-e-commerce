@@ -7,7 +7,7 @@
     
     public function __construct (string $status, DateTime $date, int $user_id){
         $this->status = $status;
-        $this->date = new DateTime();
+        $this->date = $date;
         $this->user_id = $user_id;
     }
     
