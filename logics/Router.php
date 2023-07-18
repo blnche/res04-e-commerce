@@ -3,7 +3,7 @@
 function checkRoute(string $route){
     
     $uc = new UserController;
-    $cc = new CategoryController;
+    $cc = new HomepageController;
     
     if ($route === 'register') 
     {
@@ -15,7 +15,7 @@ function checkRoute(string $route){
     }
     else if ($route === "homepage")
     {
-        $cc->displayAllCategory();
+        $cc->displayAllCategoriesAndProducts();
     }
 }
 
