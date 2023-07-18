@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        if(isset($_SESSION["user"]))
+        {
+            require "views/user/connected/_header.phtml";
+        }
+        else
+        {
+            require "views/user/guest/_header.phtml";
+        }
+
+        require $this->template;
+
+        if(isset($_SESSION["user"]))
+        {
+            require "views/user/connected/_footer.phtml";
+        }
+        else
+        {
+            require "views/user/guest/_footer.phtml";
+        }
+    ?>
+</body>
+</html>
