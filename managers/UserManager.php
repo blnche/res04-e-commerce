@@ -30,24 +30,24 @@ class UserManager extends AbstractManager {
         return $user;
     }
     
-    public function insertUser(User $user) : User
+    public function insertUser(User $user)
     {
-        $query = $this->db->prepare("INSERT INTO users (email, username, password)
-                               VALUES (?, ?, ?)");
-        $query->execute([$user->getEmail(), $user->getUsername(), $user->getPassword()]);
-        $query = $this->db->prepare("SELECT * FROM users WHERE users.email = :email");
-        $parameters = ['email' => $user->getEmail()];
+        $query = $this->db->prepare("INSERT INTO users (first_name, last_name, email, password)
+                               VALUES (:first_name, :last_name, :email, :password)");
+        $parameters = [
+            "first_name" => $user->getFirstName(),
+            "last_name" => $user->getLastName(),
+            "email" => $user->getEmail(),
+            "password" => $user->getPassword()
+        ];
         $query->execute($parameters);
-        $userId = $query->fetch(PDO::FETCH_ASSOC);
-        $user->setId($userId['id']);
-        return $user;
     }
     
     public function editUser(User $user) : void
     {
         $query = $this->db->prepare("UPDATE users SET users.username = :username, users.email = :email, users.password = :password WHERE users.id = :id");
         $parameters = [
-            'username' => $user->getUsername(),
+            // 'username' => $user->getUsername(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
             'id' => $user->getId()
