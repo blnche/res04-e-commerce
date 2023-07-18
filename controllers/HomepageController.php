@@ -2,11 +2,11 @@
 
 class HomepageController extends AbstractController{
     private CategoryManager $categoryManager;
-    private ProductsManager $productsManager;
+    private ProductManager $productsManager;
     
     public function __construct(){
         $this->categoryManager = new CategoryManager();
-        $this->productsManager = new ProductsManager();
+        $this->productsManager = new ProductManager();
     }
     
     public function displayAllCategoriesAndProducts (){

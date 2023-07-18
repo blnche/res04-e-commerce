@@ -1,6 +1,6 @@
 <?php
 
-class ProductsManager extends AbstractManager
+class ProductManager extends AbstractManager
 {
    
     public function index() : array
