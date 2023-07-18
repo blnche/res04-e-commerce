@@ -6,10 +6,10 @@ function checkRoute(string $route){
     
     if ($route === 'register') {
         
-    $uc->register();
+        $uc->register();
     
     } else if ($route === 'login') {
-    $uc->login();
+        $uc->login();
     }
 }
 

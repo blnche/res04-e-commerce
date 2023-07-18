@@ -15,6 +15,8 @@ class UserController extends AbstractController
         && !empty($_POST["email"]) && !empty($_POST["password"]))
         {
             $user = $this->manager->getUserByEmail($_POST["email"]);
+            $_SESSION["user"] = $user->getId();
+            $this->render('views/homepage.phtml', []);
         }
         else
         {  
