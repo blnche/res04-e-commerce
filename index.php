@@ -8,10 +8,18 @@ require 'models/User.php';
 require 'models/Order.php';
 require 'models/Products.php';
 
-// require 'managers/AbstractManager.php';
+require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';
 
-// require 'controllers/AbstractController.php';
+require 'controllers/AbstractController.php';
 require 'controllers/UserController.php';
+
+if(isset($_GET["route"]))
+{
+    checkRoute($_GET["route"]);
+}else{
+    checkRoute("login");
+}
+
 
 
