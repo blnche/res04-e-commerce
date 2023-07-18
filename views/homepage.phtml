@@ -21,6 +21,7 @@
         {?> 
             <article class="card">
                 <h3><?=$products[$i]->getName();?></h3>
+                <img src="<?=$products[$i]->getUrlMedia();?>" alt="oui il en faudrai un">
                 <p><?=$products[$i]->getDescription();?></p>
                 <span><?=$products[$i]->getPrice();?></span>
             </article>
