@@ -3,6 +3,7 @@
 function checkRoute(string $route){
     
     $uc = new UserController;
+    $cc = new CategoryController;
     
     if ($route === 'register') {
         
@@ -10,6 +11,9 @@ function checkRoute(string $route){
     
     } else if ($route === 'login') {
         $uc->login();
+    }
+    else if ($route === "homepage"){
+        $cc->displayAllCategory();
     }
 }
 

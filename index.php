@@ -10,15 +10,17 @@ require 'models/Products.php';
 
 require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';
+require 'managers/CategoryManager.php';
 
 require 'controllers/AbstractController.php';
 require 'controllers/UserController.php';
+require 'controllers/CategoryController.php';
 
 if(isset($_GET["route"]))
 {
     checkRoute($_GET["route"]);
 }else{
-    checkRoute("login");
+    checkRoute("homepage");
 }
 
 
