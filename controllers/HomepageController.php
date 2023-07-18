@@ -14,6 +14,8 @@ class HomepageController extends AbstractController{
         $products = $this->productsManager->index();
         $this->render('views/homepage.phtml', ['categories'=> $categories, 'products' => $products]);
     }
+
+    // public function displayAllProductsByCategory()
 }
 
 

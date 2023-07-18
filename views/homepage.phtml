@@ -17,9 +17,13 @@
 <section id="products">
     <h2>Produits</h2>
     <?php
-        foreach($products as $product)
+        for($i=0; $i<10; $i++)
         {?> 
-            <li><?=$product->getName();?></li>
+            <article class="card">
+                <h3><?=$products[$i]->getName();?></h3>
+                <p><?=$products[$i]->getDescription();?></p>
+                <span><?=$products[$i]->getPrice();?></span>
+            </article>
         <?php
         }
     ?>
