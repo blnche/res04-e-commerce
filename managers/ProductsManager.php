@@ -10,7 +10,7 @@ class ProductsManager extends AbstractManager
         $products = $query->fetchAll(PDO::FETCH_ASSOC);
         $productsTab = [];
         foreach($products as $product){
-            $productInstance = new Product($product["name"], $product["price"], $product["description"], $product["category_id"]);
+            $productInstance = new Product($product["name"], $product["price"], $product["description"], $product["category_id"], $product["url_media"]);
             array_push($productsTab, $productInstance);
         }
         return $productsTab;
