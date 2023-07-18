@@ -18,46 +18,28 @@ class Adresse
         $this->country = $country;
     }
 
-    public function getId() : int
-    {
-       return $this->id;
-    }
+    public function getId() : int{return $this->id;}
 
-    public function setId(int $id)
-    {
-       $this->id = $id;
-    }
+    public function setId(int $id){$this->id = $id;}
 
-    public function getStreet() : string
-    {
-       return $this->street;
-    }
+    public function getUserId() : int{return $this->user_id;}
 
-    public function setStreet(int $street)
-    {
-       $this->street = $street;
-    }
+    public function setUserId(int $user_id){$this->user_id = $user_id;}
 
-    public function getZip() : string
-    {
-       return $this->zip;
-    }
+    public function getStreet() : string{return $this->street;}
 
-    public function setId(int $id)
-    {
-       $this->id = $id;
-    }
+    public function setStreet(string $street){$this->street = $street;}
 
-    public function getUserId() : int
-    {
-       return $this->user_id;
-    }
+    public function getZip() : string{return $this->zip;}
 
-    public function setUserId(int $user_id)
-    {
-       $this->user_id = $user_id;
-    }
+    public function setZip(string $zip){$this->zip = $zip;}
 
+    public function getCity() : string{return $this->city;}
 
+    public function setCity(int $city){$this->city = $city;}
+
+    public function getCountry() : string{return $this->country;}
+
+    public function setCountry(int $country){$this->country = $country;}
 }
 ?>
