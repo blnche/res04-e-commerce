@@ -16,9 +16,9 @@ function checkRoute(string $route){
     else if ($route === "homepage")
     {
         $cc->displayAllCategoriesAndProducts();
-    }else if($route === "account")
+    }else if($route === "disconnect")
     {
-        
+        session_destroy();
     }
 }
 
