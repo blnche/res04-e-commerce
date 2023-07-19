@@ -16,7 +16,7 @@ la homepage contient:   -un <aside> qui contient lui-même toutes les catégorie
                         
 Si l'on séléctionne une catégorie, les livres de celle-ci s'affichent dans la <section> *ISSUES*
 
-un bouton en bas de chaque <article> permet d'ajouter le livre au panier. *ISSUES*
+un <button> en bas de chaque <article> permet d'ajouter le livre au panier. *ISSUES*
                         
 * ACCOUNT * *ISSUES*
 
