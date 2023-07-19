@@ -24,6 +24,9 @@ La page account contient:   -un <form> d'édition de l'utilisateur *ISSUES*
                             
 * CSS * *ISSUES*
 
+Prévision d'utiliser bootstrap: https://bootswatch.com/ >>> voir Yeti
+Lien stylesheet du layout >>> <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css">
+
 
 * LIENS DES IMAGES *
 
