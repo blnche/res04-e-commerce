@@ -15,7 +15,9 @@ class UserManager extends AbstractManager {
         $parameters = ["id" => $id];
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
-        return $user;
+        $userInstance = new User($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+        $userInstance->setId($user["id"]);
+        return $userInstance;
     }
     
     public function getUserByEmail(string $email) : User
@@ -25,6 +27,7 @@ class UserManager extends AbstractManager {
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
         $userInstance = new User($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+        $userInstance->setId($user["id"]);
         return $userInstance;
     }
     

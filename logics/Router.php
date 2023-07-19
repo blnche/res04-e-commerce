@@ -18,6 +18,7 @@ function checkRoute(string $route){
         $cc->displayAllCategoriesAndProducts();
     }else if($route === "disconnect")
     {
+        unset($_SESSION["user"]);
         session_destroy();
         $uc->login();
     }
