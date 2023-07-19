@@ -2,7 +2,7 @@
 
 class AdresseManager extends AbstractManager
 {
-   
+   // Récupère toutes les adresses d'un utilisateur donné depuis la base de données et les retourne sous forme d'un tableau d'objets Adresse.
     public function getAdresseByUserId($id) : array
     {
         $query = $this->db->prepare("SELECT * FROM adresses WHERE id = :id");

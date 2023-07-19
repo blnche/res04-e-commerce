@@ -2,7 +2,7 @@
 
 class OrderManager extends AbstractManager
 {
-   
+   // Récupère toutes les commandes d'un utilisateur donné depuis la base de données et les retourne sous forme d'un tableau d'objets Order.
    public function getOrdersByUserId($id) : array
    {
         $query = $this->db->prepare("SELECT * FROM orders WHERE user_id = :user_id");

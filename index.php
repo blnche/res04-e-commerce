@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); //Ouvre une session
 
 require 'logics/Router.php';
 
