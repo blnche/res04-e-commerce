@@ -1,0 +1,44 @@
+<?php
+if (empty($this->data['adresse'])) {
+}
+
+?>
+<section>
+   <h2></h2>
+</section>
+<section aria-labelledby="t-adresse">
+   <?php if ($this->data['adresse']) { ?>
+      <h2 id="t-adresse">Modifier votre adresse de livraison</h2>
+   <?php } else { ?>
+      <h2 id="t-adresse">Ajouter votre adresse de livraison</h2>
+   <?php } ?>
+</section>
+<section aria-labelledby="t-commandes">
+   <h2 id="t-commandes">Vos dernières commandes</h2>
+   <?php if (!$this->data['orders']) { ?>
+      <p>Il n'y a rien par ici pour le moment...</p>
+   <?php } else { ?>
+      <table class="table">
+         <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Date</th>
+               <th scope="col">Quantité de produits</th>
+               <th scope="col">Montant</th>
+               <th scope="col">Status</th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php foreach ($this->data['orders'] as $order) { ?>
+               <tr>
+                  <td scope="row"><?= $order->getId() ?></td>
+                  <td><?= $order->getDate() ?></td>
+                  <td><?= $order->getQuantity() ?></td>
+                  <td><?= $order->getAmount() ?></td>
+                  <td><?= $order->getStatus() ?></td>
+               </tr>
+            <?php } ?>
+         </tbody>
+      </table>
+   <?php } ?>
+</section>
