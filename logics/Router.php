@@ -19,6 +19,7 @@ function checkRoute(string $route){
     }else if($route === "disconnect")
     {
         session_destroy();
+        $uc->login();
     }
 }
 
