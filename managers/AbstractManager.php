@@ -6,11 +6,11 @@ abstract class AbstractManager
 
    public function __construct()
    {
-      $dbName = "kevinqeraca_ecommerce";
+      $dbName = "blanchepeltier_ecommerce";
       $host = "db.3wa.io";
       $port = "3306";
-      $username = "kevinqeraca";
-      $password = "666a53abc522d5ba40fc46882ee5e430";
+      $username = "blanchepeltier";
+      $password = "6df6213ed1bccc46589270829cdb7338";
       $connexionString = "mysql:host=$host;port=$port;charset=utf8;dbname=$dbName";
       
       $this->db = new PDO(
