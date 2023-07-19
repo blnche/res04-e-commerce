@@ -6,8 +6,8 @@ Ce site vend des livres
 
 L'utilisateur arrive d'abord sur la homepage
 
-S'il n'est pas connecté, le <header> et le <footer> comprend trois liens (homepage, login, register)
-Une fois log, le <header> et <footer> changent. Il comprend trois liens (homepage, account, disconnect)
+S'il n'est pas connecté, le <header> et le <footer> comprennent trois liens (homepage, login, register)
+Une fois log, le <header> et <footer> changent. Ils comprennent trois liens (homepage, account, disconnect)
 
 * HOMEPAGE *
 
@@ -47,3 +47,4 @@ Lien stylesheet du layout >>> <link rel="stylesheet" href="https://bootswatch.co
 *le maître du haut chateau* https://i.goopics.net/j3efro.jpg
 
 *Bannière*                  https://i.goopics.net/r8i46i.png
+
