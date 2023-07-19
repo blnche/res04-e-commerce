@@ -10,7 +10,7 @@ class UserController extends AbstractController
     {
         $this->manager = new UserManager();
         $this->categoryManager = new CategoryManager();
-        $this->productsManager = new ProductManager()
+        $this->productsManager = new ProductManager();
     }
 
     public function login()
