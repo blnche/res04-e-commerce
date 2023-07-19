@@ -3,10 +3,14 @@
 class UserController extends AbstractController
 {
     private UserManager $manager;
+    private CategoryManager $categoryManager;
+    private ProductManager $productsManager;
 
     public function __construct()
     {
         $this->manager = new UserManager();
+        $this->categoryManager = new CategoryManager();
+        $this->productsManager = new ProductManager()
     }
 
     public function login()
@@ -16,7 +20,9 @@ class UserController extends AbstractController
         {
             $user = $this->manager->getUserByEmail($_POST["email"]);
             $_SESSION["user"] = $user->getId();
-            $this->render('views/homepage.phtml', []);
+            $categories = $this->categoryManager->index();
+            $products = $this->productsManager->index();
+            $this->render('views/homepage.phtml', ['categories'=> $categories, 'products' => $products]);
         }
         else
         {  
