@@ -51,7 +51,6 @@ class ProductManager extends AbstractManager
         return $products_list;
     }
     
-    
      public function getProductsForOrders(int $id, int $quantity) : array
     {
         $query = $this->db->prepare("

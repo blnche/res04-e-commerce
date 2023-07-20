@@ -25,8 +25,11 @@ class CartController extends AbstractController{
                         //on créee autant d'instance du produuit trouvé grace a son id que du nombre de quantity
                     
                         //appeler fonction du manager qui renvoi un array en lui passant en commentaire product id et quantity du form
-                        
+                        $cart_items = $this->productsManager->getProductsForOrder($_POST["product-id"], $_POST["quantity"]);
+                        $_SESSION["cart"] = $cart_items;
                         //trouver comment renvoyer l'infos sur la page, surement render OU plutot dans SESSION
+                        var_dump($_SESSION["cart"]);
+                        
                     }
             }
         }
