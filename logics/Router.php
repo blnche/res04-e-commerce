@@ -1,11 +1,14 @@
-<?php 
+<?php
 
 // Fonction pour vérifier la route et exécuter les actions appropriées en fonction de la route donnée.
-function checkRoute(string $route){
-    
-    // Instancie les contrôleurs nécessaires.
-    $uc = new UserController; // Contrôleur pour la gestion des utilisateurs.
-    $cc = new HomepageController; // Contrôleur pour la page d'accueil.
+function checkRoute(string $route)
+{
+
+
+	// Instancie les contrôleurs nécessaires.
+	$uc = new UserController(); // Contrôleur pour la gestion des utilisateurs.
+	$cc = new HomepageController(); // Contrôleur pour la page d'accueil.
+	$ac = new AccountController();
 
     // Vérifie la valeur de la route pour déterminer quelle action doit être exécutée.
     if ($route === 'register') 
@@ -34,6 +37,20 @@ function checkRoute(string $route){
         session_destroy();
         $uc->login();
     }
+    elseif ($route === 'account') 
+    {
+		  $ac->displayAccountAndOrders();
+	  } 
+    elseif ($route === 'account-address-add') 
+    {
+		  $ac->addUserAdresse();
+	  } 
+    elseif ($route === 'account-address-edit') 
+    {
+		  $ac->editUserAdresse();
+	  } 
+    elseif ($route === 'account-edit') 
+    {
+		  $ac->edit();
+	  }
 }
-
-?>

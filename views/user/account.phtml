@@ -1,0 +1,110 @@
+<section>
+   <h2>Vos informations</h2>
+   <form action="?route=account-edit" method="POST">
+      <div>
+         <div>
+            <label for="first_name">Prénom</label>
+            <input type="text" name="first_name" id="first_name" value="<?= $user->getFirstName(); ?>" class="form-control">
+         </div>
+         <div>
+            <label for="last_name">Nom</label>
+            <input type="text" name="last_name" id="last_name" value="<?= $user->getLastName(); ?>" class="form-control">
+         </div>
+      </div>
+      <div>
+         <label for="email">Email</label>
+         <input type="email" name="email" id="email" value="<?= $user->getEmail(); ?>" class="form-control">
+      </div>
+      <div>
+         <label for="password">Mot de passe</label>
+         <input type="password" name="password" id="password">
+      </div>
+      <div>
+         <label for="confirm-password">Confirmer le mot de passe</label>
+         <input type="password" name="confirm-password" id="confirm-password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sauvegarder</button>
+      <!-- manque mécanisme de vérification avec le précédent mot de passe -->
+   </form>
+</section>
+<section aria-labelledby="t-adresse">
+   <h2 id="t-adresse">Vos adresses de livraison</h2>
+   <ul>
+      <?php foreach ($this->data['adresses'] as $adresse) { ?>
+         <li>
+            <article class="d-flex flex-column">
+               <p><?= $adresse->getStreet(); ?></p>
+               <p><?= $adresse->getZip(); ?><span><?= $adresse->getCity(); ?></span></p>
+               <p><?= $adresse->getCountry(); ?></p>
+            </article>
+            <button></button>
+         </li>
+      <?php } ?>
+   </ul>
+   <!-- modal d'ajout -->
+   <h3>Ajouter une adresse</h3>
+   <form action="?route=account-address-add" method="POST">
+      <div>
+         <label for="country">Pays</label>
+         <input type="text" name="country" id="country" class="form-control">
+         <label for="city">Ville</label>
+         <input type="text" name="city" id="city" class="form-control">
+         <label for="zip">Code postal</label>
+         <input type="number" name="zip" id="zip" class="form-control">
+      </div>
+      <div>
+         <label for="street">Adresse</label>
+         <input type="text" name="street" id="street" class="form-control">
+      </div>
+      <div>
+         <button type="button" class="btn btn-secondary">Annuler</button>
+         <button type="submit" class="btn btn-success">Confirmer la nouvelle adresse</button>
+      </div>
+   </form>
+   <!-- modal edition d'adresse -->
+   <h3>Editer l'adresse</h3>
+   <form action="?route=account-address-edit" method="POST">
+      <div>
+         <label for="country">Pays</label>
+         <input type="text" name="country" id="country" class="form-control">
+         <label for="city">Ville</label>
+         <input type="text" name="city" id="city" class="form-control">
+         <label for="zip">Code postal</label>
+         <input type="number" name="zip" id="zip" class="form-control">
+      </div>
+      <div>
+         <input type="hidden" name="id" value="">
+         <button type="button" class="btn btn-secondary">Annuler</button>
+         <button type="submit" class="btn btn-danger">Sauvegarder les changements</button>
+      </div>
+   </form>
+</section>
+<section aria-labelledby="t-commandes">
+   <h2 id="t-commandes">Vos dernières commandes</h2>
+   <?php if (!$this->data['orders']) { ?>
+      <p>Il n'y a rien par ici pour le moment...</p>
+   <?php } else { ?>
+      <table class="table">
+         <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Date</th>
+               <th scope="col">Quantité de produits</th>
+               <th scope="col">Montant</th>
+               <th scope="col">Status</th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php foreach ($this->data['orders'] as $order) { ?>
+               <tr>
+                  <td scope="row"><?= $order->getId() ?></td>
+                  <td><?= $order->getDate() ?></td>
+                  <td><?= $order->getQuantity() ?></td>
+                  <td><?= $order->getAmount() ?></td>
+                  <td><?= $order->getStatus() ?></td>
+               </tr>
+            <?php } ?>
+         </tbody>
+      </table>
+   <?php } ?>
+</section>
