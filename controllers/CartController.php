@@ -13,8 +13,10 @@ class CartController extends AbstractController{
     
     public function addToCart()
     {
+        echo "there";
         if(isset($_GET["action"]))
         {
+            echo "here";
             switch($_GET["action"])
             {
                 case "add" : //on va recevoir des data qu'on va stocker dans un session[cart] instancié comme array vide en debut de session dans la methode login

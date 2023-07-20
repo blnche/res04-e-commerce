@@ -1,5 +1,6 @@
 <?php
 session_start(); //Ouvre une session
+$_SESSION["cart"] = []; //Ouvre le panier
 
 require 'logics/Router.php';
 

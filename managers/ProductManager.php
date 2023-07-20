@@ -12,6 +12,7 @@ class ProductManager extends AbstractManager
         foreach($products as $product)
         {
             $productInstance = new Product($product["name"], $product["price"], $product["description"], $product["category_id"], $product["url_media"]);
+            $productInstance->setId($product["id"]);
             array_push($productsTab, $productInstance);
         }
         
