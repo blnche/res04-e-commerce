@@ -12,9 +12,12 @@ require 'models/Product.php';
 require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';
 require 'managers/CategoryManager.php';
+require 'managers/OrderManager.php';
+require 'managers/AdresseManager.php';
 require 'managers/ProductManager.php';
 
 require 'controllers/AbstractController.php';
+require 'controllers/AccountController.php';
 require 'controllers/UserController.php';
 require 'controllers/HomepageController.php';
 
