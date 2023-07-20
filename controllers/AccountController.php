@@ -27,8 +27,9 @@ class AccountController extends AbstractController
 		// Affichage du template "account.phtml" avec les données de l'utilisateur, les commandes et l'adresse
 		$this->render("views/user/account.phtml", ["user" => $user, "orders" => $orders, "adresses" => $adresses]);
 	}
-	public function addUserAdresse() {
-		if(isset($_POST)) {
+	public function addUserAdresse()
+	{
+		if (isset($_POST)) {
 			$user_id = $_SESSION['user'];
 			$street = $_POST['street'];
 			$zip = $_POST['zip'];
@@ -47,7 +48,33 @@ class AccountController extends AbstractController
 			exit();
 		}
 	}
-	public function edit() {
-		
+	public function edit()
+	{
+		if (isset($_POST)) {
+			$id = $_SESSION['user'];
+			$first_name = $_POST['first_name'];
+			$last_name = $_POST['last_name'];
+			$email = $_POST['email'];
+			$pwd = $_POST['password'];
+			$confirm_pwd = $_POST['confirm-password'];
+
+			if ($pwd !== $confirm_pwd) {
+				echo "nope"; // action de guard
+				unset($_POST);
+				return;
+			}
+
+			$pwd = password_hash($pwd, PASSWORD_DEFAULT);
+			$user = new User(
+				$first_name,
+				$last_name,
+				$email,
+				$pwd
+			);
+			$user->setId($id);
+			$this->userManager->editUser($user);
+			header("Location: /index.php?route=account");
+			exit();
+		}
 	}
 }

@@ -1,6 +1,6 @@
 <section>
    <h2>Vos informations</h2>
-   <form action="?route=account-edit">
+   <form action="?route=account-edit" method="POST">
       <div>
          <div>
             <label for="first_name">Prénom</label>
@@ -24,6 +24,7 @@
          <input type="password" name="confirm-password" id="confirm-password">
       </div>
       <button type="submit" class="btn btn-primary">Sauvegarder</button>
+      <!-- manque mécanisme de vérification avec le précédent mot de passe -->
    </form>
 </section>
 <section aria-labelledby="t-adresse">
@@ -62,7 +63,7 @@
    </form>
    <!-- modal edition d'adresse -->
    <h3>Editer l'adresse</h3>
-   <form action="?route=account-address-edit" method="PATCH">
+   <form action="?route=account-address-edit" method="POST">
       <div>
          <label for="country">Pays</label>
          <input type="text" name="country" id="country" class="form-control">
