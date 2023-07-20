@@ -52,7 +52,7 @@ class ProductManager extends AbstractManager
         return $products_list;
     }
     
-     public function getProductsForOrders(int $id, int $quantity) : array
+     public function getProductsForOrder(int $id, int $quantity) : array
     {
         $query = $this->db->prepare("
             SELECT *
@@ -67,7 +67,7 @@ class ProductManager extends AbstractManager
         
         $products = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        for($i=0; $i<$quantity; $i++)
+        /*for($i=0; $i<$quantity; $i++)
         {
             $new_product = new Product(
                 $products[$i]["name"],
@@ -77,8 +77,19 @@ class ProductManager extends AbstractManager
                 $products[$i]["url_media"]
             );
             
-            $new_product->setId($products[$i]["id"]);
+            $new_product->setId($products[$i]["id"]);*/
+        
+        foreach($products as $product)
+        {
+            $new_product = new Product(
+                $product["name"],
+                $product["price"],
+                $product["description"],
+                $product["category_id"],
+                $product["url_media"]
+            );
             
+            $new_product->setId($product["id"]);
             $products_list[] = $new_product;
         }
         

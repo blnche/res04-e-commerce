@@ -1,6 +1,26 @@
-<h1>Cart</h1>
 <?php
-    $cart = $_SESSION["cart"];
-    /*var_dump($cart);*/
-    var_dump($this->data);
+    $cart_items = $_SESSION["cart"];
+    var_dump($cart_items);
 ?>
+<h1>Cart</h1>
+<ul>
+<?php
+    foreach($cart_items as $item)
+    {
+        foreach($item as $i)
+        {
+            echo $i;
+        
+?>
+            
+            <li>
+                <?php 
+                    var_dump($i);
+                    /*$d = $i->getName(); echo $d; */
+                ?>
+            </li>
+<?php
+        }
+    }
+?>
+</ul>

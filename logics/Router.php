@@ -7,7 +7,7 @@ function checkRoute(string $route)
 
 	// Instancie les contrôleurs nécessaires.
 	$uc = new UserController(); // Contrôleur pour la gestion des utilisateurs.
-	$cc = new HomepageController(); // Contrôleur pour la page d'accueil.
+	$hc = new HomepageController(); // Contrôleur pour la page d'accueil.
 	$ac = new AccountController();
 	$cc = new CartController();
 
@@ -25,11 +25,11 @@ function checkRoute(string $route)
     else if ($route === "homepage")
     {
         // Si la route est "homepage", appelle la méthode 'displayAllCategoriesAndProducts()' du contrôleur HomepageController.
-        $cc->displayAllCategoriesAndProducts();
+        $hc->displayAllCategoriesAndProducts();
     }
     else if ($route === "homepage-filtered")
     {
-        $cc->getProductsForCategory();
+        $hc->getProductsForCategory();
     }
     else if($route === "disconnect")
     {
@@ -54,8 +54,12 @@ function checkRoute(string $route)
     {
 		  $ac->edit();
 	  }
-    else if ($route === 'cart')
+    else if ($route === 'add-item')
     {
         $cc->addToCart();
+    }
+    else if ($route === 'cart')
+    {
+        $cc->index();
     }
 }

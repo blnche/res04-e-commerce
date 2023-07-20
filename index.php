@@ -1,6 +1,4 @@
 <?php
-session_start(); //Ouvre une session
-$_SESSION["cart"] = []; //Ouvre le panier
 
 require 'logics/Router.php';
 
@@ -9,6 +7,8 @@ require 'models/Category.php';
 require 'models/User.php';
 require 'models/Order.php';
 require 'models/Product.php';
+
+session_start(); //Ouvre une session
 
 require 'managers/AbstractManager.php';
 require 'managers/UserManager.php';

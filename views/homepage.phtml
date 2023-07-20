@@ -40,13 +40,13 @@
 <section id="products">
     <h2>Produits</h2>
     <?php
-        require "cart.phtml";
+        
         // Affiche les 10 premiers produits dans une boucle
         for($i=0; $i<10; $i++)
         {
     ?> 
-        <form id="addItem" method="POST" action="index.php?route=cart&action=add">
-            <input type="hidden" name="formName" value="product_order"/>
+        <form id="addItem" method="POST" action="index.php?route=add-item">
+            <input type="hidden" name="formName" value="addItem"/>
             
             <article class="card">
                 <h3><?= $products[$i]->getName(); ?></h3>

@@ -24,7 +24,7 @@ class UserController extends AbstractController
 
             // Stockage de l'ID de l'utilisateur dans la variable de session "user"
             $_SESSION["user_id"] = $user->getId();
-            
+            $_SESSION["cart"] = [];
             // Récupération des catégories et des produits
             $categories = $this->categoryManager->index();
             $products = $this->productsManager->index();
