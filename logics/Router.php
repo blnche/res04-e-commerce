@@ -23,6 +23,10 @@ function checkRoute(string $route){
         // Si la route est "homepage", appelle la méthode 'displayAllCategoriesAndProducts()' du contrôleur HomepageController.
         $cc->displayAllCategoriesAndProducts();
     }
+    else if ($route === "homepage-filtered")
+    {
+        $cc->getProductsForCategory();
+    }
     else if($route === "disconnect")
     {
         // Si la route est "disconnect", détruit la session utilisateur pour effectuer une déconnexion et redirige vers la page de connexion.
