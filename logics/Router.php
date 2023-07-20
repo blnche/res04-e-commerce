@@ -9,6 +9,7 @@ function checkRoute(string $route)
 	$uc = new UserController(); // Contrôleur pour la gestion des utilisateurs.
 	$cc = new HomepageController(); // Contrôleur pour la page d'accueil.
 	$ac = new AccountController();
+	$cc = new CartController();
 
     // Vérifie la valeur de la route pour déterminer quelle action doit être exécutée.
     if ($route === 'register') 
@@ -53,4 +54,8 @@ function checkRoute(string $route)
     {
 		  $ac->edit();
 	  }
+    else if ($route === 'cart')
+    {
+        $cc->addToCart();
+    }
 }
