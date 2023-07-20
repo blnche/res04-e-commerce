@@ -22,10 +22,10 @@ class AccountController extends AbstractController
 		$orders = $this->orderManager->getOrdersByUserId($_SESSION["user"]);
 
 		// Récupération de l'adresse de l'utilisateur actuel en utilisant son ID
-		$adresse = $this->adresseManager->getAdressesByUserId($_SESSION["user"]);
+		$adresses = $this->adresseManager->getAdressesByUserId($_SESSION["user"]);
 
 		// Affichage du template "account.phtml" avec les données de l'utilisateur, les commandes et l'adresse
-		$this->render("views/user/account.phtml", ["user" => $user, "orders" => $orders, "adresse" => $adresse]);
+		$this->render("views/user/account.phtml", ["user" => $user, "orders" => $orders, "adresses" => $adresses]);
 	}
 	public function addUserAdresse() {
 		if(isset($_POST)) {
@@ -46,5 +46,8 @@ class AccountController extends AbstractController
 			header("Location: /index.php?route=account");
 			exit();
 		}
+	}
+	public function edit() {
+		
 	}
 }

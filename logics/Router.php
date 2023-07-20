@@ -28,5 +28,9 @@ function checkRoute(string $route)
 		$ac->displayAccountAndOrders();
 	} elseif ($route === 'account-address-add') {
 		$ac->addUserAdresse();
+	} elseif ($route === 'account-address-edit') {
+
+	} elseif ($route === 'account-edit') {
+		$ac->edit();
 	}
 }
