@@ -1,14 +1,20 @@
-<aside class="side-bar">
-   <nav>
-      <ul>
-         <li><a href="#informations">Informations</a></li>
-         <li><a href="#adresses">Adresses de livraison</a></li>
-         <li><a href="#commandes">Dernières commandes</a></li>
+<aside class="navbar position-fixed top-50 end-0 translate-middle z-3 bg-white border-secondary">
+   <nav class="m-2">
+      <ul class="navbar-nav">
+         <li class="nav-item">
+            <a class="nav-link" href="#informations">Informations</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#adresses">Adresses de livraison</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link"href="#commandes">Dernières commandes</a>
+         </li>
       </ul>
    </nav>
 </aside>
 <section aria-labelledby="t-infos" id="informations">
-   <h2 id="t-infos">Vos informations</h2>
+   <h2 class="my-3" id="t-infos">Vos informations</h2>
    <form action="?route=account-edit" method="POST">
       <div>
          <div>
@@ -24,76 +30,112 @@
          <label for="email">Email</label>
          <input type="email" name="email" id="email" value="<?= $this->data['user']->getEmail(); ?>" class="form-control">
       </div>
-      <div>
-         <label for="password">Ancien mot de passe</label>
-         <input type="password" name="password" id="password">
-      </div>
-      <div>
-         <label for="new-password">Nouveau mot de passe</label>
-         <input type="password" name="new-password" id="new-password">
-      </div>
-      <div>
-         <label for="new-password-confirm">Confirmer le nouveau mot de passe</label>
-         <input type="password" name="new-password-confirm" id="new-password-confirm">
+      <div class="border border-primary py-2">
+         <h3 class="my-2 fs-4">Modifier mot de passe</h3>
+         <div>
+            <label for="password">Ancien mot de passe</label>
+            <input type="password" name="password" id="password">
+         </div>
+         <div>
+            <label for="new-password">Nouveau mot de passe</label>
+            <input type="password" name="new-password" id="new-password">
+         </div>
+         <div>
+            <label for="new-password-confirm">Confirmer le nouveau mot de passe</label>
+            <input type="password" name="new-password-confirm" id="new-password-confirm">
+         </div>
       </div>
       <button type="submit" class="btn btn-primary">Sauvegarder</button>
       <!-- manque mécanisme de vérification avec le précédent mot de passe -->
    </form>
 </section>
 <section aria-labelledby="t-adresses" id="adresses">
-   <h2 id="t-adresses">Vos adresses de livraison</h2>
-   <ul>
+   <h2 class="my-3" id="t-adresses">Vos adresses de livraison</h2>
+   <ul class="list-group">
       <?php foreach ($this->data['adresses'] as $adresse) { ?>
-         <li>
-            <article class="d-flex flex-column">
-               <p><?= $adresse->getStreet(); ?></p>
-               <p><?= $adresse->getZip(); ?><span><?= $adresse->getCity(); ?></span></p>
-               <p><?= $adresse->getCountry(); ?></p>
+         <li class="list-group-item">
+            <article data-adresse-id="<?= $adresse->getId(); ?>">
+               <div class="d-flex flex-column">
+                  <p class="adresse-street"><?= $adresse->getStreet(); ?></p>
+                  <p><span class="adresse-zip"><?= $adresse->getZip(); ?></span><span class="adresse-city"><?= $adresse->getCity(); ?></span></p>
+                  <p class="adresse-country"><?= $adresse->getCountry(); ?></p>
+               </div>
+               <button type="button" class="btn text-primary" aria-label="Editer l'adresse" data-bs-toggle="modal" data-bs-target="#edit-adresse">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                     <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                  </svg>
+               </button>
             </article>
-            <button></button>
          </li>
       <?php } ?>
    </ul>
+   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-adresse">Ajouter une adresse</button>
    <!-- modal d'ajout -->
-   <h3>Ajouter une adresse</h3>
-   <form action="?route=account-address-add" method="POST">
-      <div>
-         <label for="country">Pays</label>
-         <input type="text" name="country" id="country" class="form-control">
-         <label for="city">Ville</label>
-         <input type="text" name="city" id="city" class="form-control">
-         <label for="zip">Code postal</label>
-         <input type="number" name="zip" id="zip" class="form-control">
+   <div class="modal fade" id="add-adresse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h3 class="modal-title fs-5" id="exampleModalLabel">Ajouter une adresse</h3>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="?route=account-address-add" method="POST">
+               <div class="modal-body">
+                  <div>
+                     <label for="country">Pays</label>
+                     <input type="text" name="country" id="country" class="form-control">
+                     <label for="city">Ville</label>
+                     <input type="text" name="city" id="city" class="form-control">
+                     <label for="zip">Code postal</label>
+                     <input type="number" name="zip" id="zip" class="form-control">
+                  </div>
+                  <div>
+                     <label for="street">Adresse</label>
+                     <input type="text" name="street" id="street" class="form-control">
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                  <button type="submit" class="btn btn-success">Confirmer la nouvelle adresse</button>
+               </div>
+            </form>
+         </div>
       </div>
-      <div>
-         <label for="street">Adresse</label>
-         <input type="text" name="street" id="street" class="form-control">
-      </div>
-      <div>
-         <button type="button" class="btn btn-secondary">Annuler</button>
-         <button type="submit" class="btn btn-success">Confirmer la nouvelle adresse</button>
-      </div>
-   </form>
+   </div>
    <!-- modal edition d'adresse -->
-   <h3>Editer l'adresse</h3>
-   <form action="?route=account-address-edit" method="POST">
-      <div>
-         <label for="country">Pays</label>
-         <input type="text" name="country" id="country" class="form-control">
-         <label for="city">Ville</label>
-         <input type="text" name="city" id="city" class="form-control">
-         <label for="zip">Code postal</label>
-         <input type="number" name="zip" id="zip" class="form-control">
+   <div class="modal fade" id="edit-adresse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h3 class="modal-title fs-5" id="exampleModalLabel">Editer l'adresse</h3>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="?route=account-address-edit" method="POST">
+               <div class="modal-body">
+                  <div>
+                     <label for="country">Pays</label>
+                     <input type="text" name="country" id="country" class="form-control">
+                     <label for="city">Ville</label>
+                     <input type="text" name="city" id="city" class="form-control">
+                     <label for="zip">Code postal</label>
+                     <input type="number" name="zip" id="zip" class="form-control">
+                     <label for="street">Adresse</label>
+                     <input type="text" name="street" id="street" class="form-control">
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <input type="hidden" name="id" value="">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                  <button type="submit" class="btn btn-primary">Sauvegarder les changements</button>
+               </div>
+            </form>
+         </div>
       </div>
-      <div>
-         <input type="hidden" name="id" value="">
-         <button type="button" class="btn btn-secondary">Annuler</button>
-         <button type="submit" class="btn btn-danger">Sauvegarder les changements</button>
-      </div>
-   </form>
+   </div>
+
+
 </section>
 <section aria-labelledby="t-commandes" id="commandes">
-   <h2 id="t-commandes">Vos dernières commandes</h2>
+   <h2 class="my-3" id="t-commandes">Vos dernières commandes</h2>
    <?php if (!$this->data['orders']) { ?>
       <p>Il n'y a rien par ici pour le moment...</p>
    <?php } else { ?>
@@ -121,3 +163,24 @@
       </table>
    <?php } ?>
 </section>
+
+<script>
+   const editAdresseForm = document.getElementById('edit-adresse');
+   const adresses = document.querySelectorAll('#adresses article');
+
+   adresses.forEach(adresse => {
+      const id = adresse.getAttribute('data-adresse-id');
+      const editBtn = adresse.querySelector('button[data-bs-target="#edit-adresse"]');
+
+      editBtn.addEventListener('click', () => {
+         const adresseStreet = adresse.querySelector(".adresse-street").textContent;
+         editAdresseForm.querySelector('input[name="street"]').value = adresseStreet;
+         const adresseCountry = adresse.querySelector(".adresse-country").textContent;
+         editAdresseForm.querySelector('input[name="country"').value = adresseCountry;
+         const adresseZip = adresse.querySelector(".adresse-zip").textContent;
+         editAdresseForm.querySelector('input[name="zip"').value = adresseZip;
+         const adresseCity = adresse.querySelector(".adresse-city").textContent;
+         editAdresseForm.querySelector('input[name="city"').value = adresseCity;
+      })
+   })
+</script>

@@ -5,7 +5,7 @@ class AdresseManager extends AbstractManager
    // Récupère toutes les adresses d'un utilisateur donné depuis la base de données et les retourne sous forme d'un tableau d'objets Adresse.
     public function getAdressesByUserId($user_id) : array
     {
-        $query = $this->db->prepare("SELECT * FROM adresses WHERE user_id = :user_id");
+        $query = $this->db->prepare("SELECT * FROM addresses WHERE user_id = :user_id");
         $parameters = [
             "user_id" => $user_id
         ];
@@ -14,6 +14,7 @@ class AdresseManager extends AbstractManager
         $adressesTab = [];
         foreach($adresses as $adresse){
             $adresseInstance = new Adresse($adresse["user_id"], $adresse["street"], $adresse["zip"], $adresse["city"], $adresse["country"]);
+            $adresseInstance->setId($adresse['id']);
             array_push($adressesTab, $adresseInstance);
         }
         return $adressesTab;
@@ -21,7 +22,7 @@ class AdresseManager extends AbstractManager
 
     public function addAdresse(Adresse $adresse) : void {
         $query = $this->db->prepare('
-            INSERT INTO adresses (user_id, street, zip, city, country)
+            INSERT INTO addresses (user_id, street, zip, city, country)
             VALUES (:user_id, :street, :zip, :city, :country)
         ');
         $parameters = [
@@ -32,10 +33,11 @@ class AdresseManager extends AbstractManager
             'country' => $adresse->getCountry()
         ];
         $query->execute($parameters);
+        var_dump($query->errorInfo());
     }
     public function getAdresseById(int $id) : Adresse {
         $query = $this->db->prepare('
-            SELECT * FROM adresses
+            SELECT * FROM addresses
             WHERE id = :id
         ');
         $parameters = ['id' => $id];
@@ -59,7 +61,7 @@ class AdresseManager extends AbstractManager
         $country = $values['country'] ?? $prevData->getCountry();
         
         $query = $this->db->prepare('
-            UPDATE adresses
+            UPDATE addresses
             SET street = :street,
                 zip = :zip,
                 city = :city,
