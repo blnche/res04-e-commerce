@@ -37,19 +37,19 @@ function checkRoute(string $route)
         session_destroy();
         $uc->login();
     }
-    elseif ($route === 'account') 
+    else if ($route === 'account') 
     {
 		  $ac->displayAccountAndOrders();
 	  } 
-    elseif ($route === 'account-address-add') 
+    else if ($route === 'account-address-add') 
     {
 		  $ac->addUserAdresse();
 	  } 
-    elseif ($route === 'account-address-edit') 
+    else if ($route === 'account-address-edit') 
     {
 		  $ac->editUserAdresse();
 	  } 
-    elseif ($route === 'account-edit') 
+    else if ($route === 'account-edit') 
     {
 		  $ac->edit();
 	  }
