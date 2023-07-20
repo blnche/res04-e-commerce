@@ -17,6 +17,21 @@
         }
     ?>
     </ul>
+    <form method="POST" action="index.php?route=homepage-filtered">
+         <input type="hidden" name="formName" value="getProductCategory"/>
+         <label for="category_list">Quelle catégorie ?</label>
+         <select name="category_list" id="category_list">
+             <?php 
+            foreach($categories as $category)
+            {   
+            ?>
+                <option value="<?= $category->getId(); ?>"> <?= $category->getName(); ?> </option>
+            <?php
+            }
+        ?>
+        </select>
+        <input type="submit" value="Submit"> 
+     </form>
 </aside>
 <section id="products">
     <h2>Produits</h2>
