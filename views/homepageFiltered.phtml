@@ -1,7 +1,8 @@
 <?php
     // Récupère les données des catégories et des produits depuis la variable $this->data
     $categories = $this->data["categories"];
-    $products = $this->data["products"];
+    $products_filtered = $this->data["products-filtered"];
+    $category_name = $this->data["category-name"];
 ?>
 
 <aside id="categories">
@@ -21,31 +22,33 @@
          <input type="hidden" name="formName" value="getProductCategory"/>
          <label for="category_list">Quelle catégorie ?</label>
          <select name="category_list" id="category_list">
-             <?php 
+            <?php 
             foreach($categories as $category)
             {   
             ?>
                 <option value="<?= $category->getId(); ?>"> <?= $category->getName(); ?> </option>
             <?php
             }
-        ?>
+            ?>
         </select>
         <input type="submit" value="Submit"> 
         <a href="index.php?route=homepage">Voir tous les livres</a>
      </form>
 </aside>
+
 <section id="products">
-    <h2>Produits</h2>
+    <h2>Produits de la catégorie <?= $category_name ?></h2> <!--dynamiser le nom de la category -->
+    
     <?php
         // Affiche les 10 premiers produits dans une boucle
-        for($i=0; $i<10; $i++)
+        foreach($products_filtered as $products)
         {
     ?> 
             <article class="card">
-                <h3><?=$products[$i]->getName();?></h3>
-                <img width="200" src="<?=$products[$i]->getUrlMedia();?>" alt="oui il en faudrait un">
-                <p><?=$products[$i]->getDescription();?></p>
-                <span><?=$products[$i]->getPrice();?>€</span>
+                <h3><?=$products->getName();?></h3>
+                <img width="200" src="<?=$products->getUrlMedia();?>" alt="oui il en faudrait un">
+                <p><?=$products->getDescription();?></p>
+                <span><?=$products->getPrice();?>€</span>
             </article>
     <?php
         }
