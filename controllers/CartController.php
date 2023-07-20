@@ -31,7 +31,7 @@ class CartController extends AbstractController{
                         $_SESSION["cart"] = $cart_items;
                         //trouver comment renvoyer l'infos sur la page, surement render OU plutot dans SESSION
                         var_dump($_SESSION["cart"]);
-                        
+                        $this->render('views/cart.phtml', [$cart_items]);
                     }
             }
         }

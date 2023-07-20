@@ -45,7 +45,7 @@
         for($i=0; $i<10; $i++)
         {
     ?> 
-        <form method="POST" action="index.php?route=<?=$route?>&action=add">
+        <form id="addItem" method="POST" action="index.php?route=cart&action=add">
             <input type="hidden" name="formName" value="product_order"/>
             
             <article class="card">
@@ -55,8 +55,8 @@
                 <span><?= $products[$i]->getPrice(); ?>€</span>
             </article>
             
-            <input type="hidden" name="product-id" value="<?= $products[$i]->getId(); ?>"/>
-            <input type="number" name="quantity" value="1" size="2"/>
+            <input type="hidden" name="product-id" id="product-id" value="<?= $products[$i]->getId(); ?>"/>
+            <input type="number" name="quantity" id="product-quantity" value="1" size="2"/>
             <input type="submit" value="Ajouter au panier"/>
         </form>
     <?php

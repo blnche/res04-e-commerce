@@ -20,6 +20,7 @@ require 'managers/ProductManager.php';
 require 'controllers/AbstractController.php';
 require 'controllers/AccountController.php';
 require 'controllers/UserController.php';
+require 'controllers/CartController.php';
 require 'controllers/HomepageController.php';
 
 if(isset($_GET["route"]))
