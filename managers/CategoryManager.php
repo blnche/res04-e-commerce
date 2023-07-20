@@ -14,5 +14,30 @@
             }
             return $categoriesTab;
         }
+        
+        //method pour get category object
+        public function getCategoryById (int $id) : Category
+        {
+            $query = $this->db->prepare("
+                SELECT *
+                FROM categories
+                WHERE id = :id
+            ");
+            $parameters = 
+            [
+                "id" => $id    
+            ];
+            $query->execute($parameters);
+            
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            
+            $category = new Category (
+                    $result["name"]
+            );
+            
+            $category->setId($result["id"]);
+            
+            return $category;
+        }
     }
 ?>
