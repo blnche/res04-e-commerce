@@ -40,7 +40,7 @@ class HomepageController extends AbstractController{
                 // Récupération de tous les produits filtrés
                 $products_filtered = $this->productsManager->getProductsForCategory($category_id);
                 
-                $this->render('views/homepage-filtered.phtml', ['categories'=> $categories, 'products-filtered' => $products_filtered, 'category-name' => $category_name]);
+                $this->render('views/homepageFiltered.phtml', ['categories'=> $categories, 'products-filtered' => $products_filtered, 'category-name' => $category_name]);
             }
         }
     }

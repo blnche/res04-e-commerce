@@ -2,6 +2,9 @@
     // Récupère les données des catégories et des produits depuis la variable $this->data
     $categories = $this->data["categories"];
     $products_filtered = $this->data["products-filtered"];
+    $category_name = $this->data["category-name"];
+    
+    var_dump($category_name);
 ?>
 
 <aside id="categories">
@@ -13,39 +16,40 @@
         {
     ?> 
             <li><?=$category->getName();?></li>
+    <?php
         }
+    ?>
     </ul>
     <form method="POST" action="index.php?route=homepage-filtered">
          <input type="hidden" name="formName" value="getProductCategory"/>
          <label for="category_list">Quelle catégorie ?</label>
          <select name="category_list" id="category_list">
-             <?php 
+            <?php 
             foreach($categories as $category)
             {   
             ?>
-                <option value="<?= $category['id']; ?>"> <?= $category['name']; ?> </option>
+                <option value="<?= $category->getId(); ?>"> <?= $category->getName(); ?> </option>
             <?php
             }
-        ?>
+            ?>
         </select>
         <input type="submit" value="Submit"> 
      </form>
-
-    
 </aside>
+
 <section id="products">
-    <h2>Produits de la Categorie</h2> <!--dynamiser le nom de la category -->
+    <h2>Produits de la catégorie <?= $category_name ?></h2> <!--dynamiser le nom de la category -->
     
     <?php
         // Affiche les 10 premiers produits dans une boucle
-        for($i=0; $i<10; $i++)
+        foreach($products_filtered as $products)
         {
     ?> 
             <article class="card">
-                <h3><?=$products_filtered[$i]->getName();?></h3>
-                <img width="200" src="<?=$products_filtered[$i]->getUrlMedia();?>" alt="oui il en faudrait un">
-                <p><?=$products_filtered[$i]->getDescription();?></p>
-                <span><?=$products_filtered[$i]->getPrice();?>€</span>
+                <h3><?=$products->getName();?></h3>
+                <img width="200" src="<?=$products->getUrlMedia();?>" alt="oui il en faudrait un">
+                <p><?=$products->getDescription();?></p>
+                <span><?=$products->getPrice();?>€</span>
             </article>
     <?php
         }
