@@ -50,4 +50,38 @@ class ProductManager extends AbstractManager
         
         return $products_list;
     }
+    
+     public function getProductsForOrders(int $id, int $quantity) : array
+    {
+        $query = $this->db->prepare("
+            SELECT *
+            FROM products
+            WHERE id = :id
+        ");
+        $parameters = 
+        [
+            "id" => $id
+        ];
+        $query->execute($parameters);
+        
+        $products = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        for($i=0; $i<$quantity; $i++)
+        {
+            $new_product = new Product(
+                $products[$i]["name"],
+                $products[$i]["price"],
+                $products[$i]["description"],
+                $products[$i]["category_id"],
+                $products[$i]["url_media"]
+            );
+            
+            $new_product->setId($products[$i]["id"]);
+            
+            $products_list[] = $new_product;
+        }
+        
+        return $products_list;
+    //get product by id for quantity avec en parametre id et quantity qui renvoit un array
+    }
 }
