@@ -51,5 +51,5 @@ class ProductManager extends AbstractManager
         return $products_list;
     }
     
-    //get product by id for quantity avec en parametre id et quantity qui renvoit un array
+    //get product by id for quantity avec en parametre id et quantity qui renvoit un array de products
 }
