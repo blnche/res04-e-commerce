@@ -16,6 +16,7 @@ class Adresse
         $this->zip = $zip;
         $this->city = $city;
         $this->country = $country;
+        $this->id = null;
     }
 
     public function getId() : int{return $this->id;}
