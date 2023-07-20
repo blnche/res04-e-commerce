@@ -43,7 +43,7 @@ class ProductManager extends AbstractManager
                 $product["url_media"]
             );
             
-            $new_product->setId($result["id"]);
+            $new_product->setId($product["id"]);
             
             $products_list[] = $new_product;
         }

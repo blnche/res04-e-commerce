@@ -24,6 +24,3 @@ if(isset($_GET["route"]))
 }else{
     checkRoute("homepage");
 }
-
-
-

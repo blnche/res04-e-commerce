@@ -9,7 +9,10 @@
             $categories = $query->fetchAll(PDO::FETCH_ASSOC);
             $categoriesTab = [];
             foreach($categories as $category){
-                $categoryInstance = new Category($category["name"]);
+                $categoryInstance = new Category(
+                    $category["name"]
+                );
+                $categoryInstance->setId($category["id"]);
                 array_push($categoriesTab, $categoryInstance);
             }
             return $categoriesTab;
