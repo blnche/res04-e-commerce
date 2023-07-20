@@ -2,6 +2,9 @@
     // Récupère les données des catégories et des produits depuis la variable $this->data
     $categories = $this->data["categories"];
     $products = $this->data["products"];
+    var_dump($_SESSION["user_id"]);
+    var_dump($_SESSION["cart"]);
+    $route = $_GET["route"];
 ?>
 
 <aside id="categories">
@@ -42,7 +45,7 @@
         for($i=0; $i<10; $i++)
         {
     ?> 
-        <form method="POST" action="index.php?action=add">
+        <form method="POST" action="index.php?route=<?=$route?>&action=add">
             <input type="hidden" name="formName" value="product_order"/>
             
             <article class="card">
