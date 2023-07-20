@@ -23,8 +23,8 @@ class UserController extends AbstractController
             $user = $this->manager->getUserByEmail($_POST["email"]);
 
             // Stockage de l'ID de l'utilisateur dans la variable de session "user"
-            $_SESSION["user"] = $user->getId();
-
+            $_SESSION["user_id"] = $user->getId();
+            
             // Récupération des catégories et des produits
             $categories = $this->categoryManager->index();
             $products = $this->productsManager->index();
