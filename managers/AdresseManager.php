@@ -3,11 +3,11 @@
 class AdresseManager extends AbstractManager
 {
    // Récupère toutes les adresses d'un utilisateur donné depuis la base de données et les retourne sous forme d'un tableau d'objets Adresse.
-    public function getAdressesByUserId($id) : array
+    public function getAdressesByUserId($user_id) : array
     {
-        $query = $this->db->prepare("SELECT * FROM adresses WHERE id = :id");
+        $query = $this->db->prepare("SELECT * FROM adresses WHERE user_id = :user_id");
         $parameters = [
-            "id" => $id
+            "user_id" => $user_id
         ];
         $query->execute($parameters);
         $adresses = $query->fetchAll(PDO::FETCH_ASSOC);
