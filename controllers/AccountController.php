@@ -77,4 +77,24 @@ class AccountController extends AbstractController
 			exit();
 		}
 	}
+	public function editUserAdresse()
+	{
+		if (isset($_POST)) {
+			$id = $_POST['id'];
+			$street = $_POST['street'];
+			$zip = $_POST['zip'];
+			$city = $_POST['city'];
+			$country = $_POST['country'];
+			$values = [
+				'id' => $id,
+				'street' => $street,
+				'zip' => $zip,
+				'city' => $city,
+				'country' => $country
+			];
+			$this->adresseManager->editAdresse($values);
+			header("Location: /index.php?route=account");
+			exit();
+		}
+	}
 }

@@ -33,5 +33,46 @@ class AdresseManager extends AbstractManager
         ];
         $query->execute($parameters);
     }
+    public function getAdresseById(int $id) : Adresse {
+        $query = $this->db->prepare('
+            SELECT * FROM adresses
+            WHERE id = :id
+        ');
+        $parameters = ['id' => $id];
+        $query->execute($parameters);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $adresse = new Adresse(
+            $result['user_id'],
+            $result['street'],
+            $result['zip'],
+            $result['city'],
+            $result['country']
+        );
+        $adresse->setId($id);
+        return $adresse;
+    }
+    public function editAdresse(array $values) : void {
+        $prevData = $this->getAdresseById($values['id']);
+        $street = $values['street'] ?? $prevData->getStreet();
+        $zip = $values['zip'] ?? $prevData->getZip();
+        $city = $values['city'] ?? $prevData->getCity();
+        $country = $values['country'] ?? $prevData->getCountry();
+        
+        $query = $this->db->prepare('
+            UPDATE adresses
+            SET street = :street,
+                zip = :zip,
+                city = :city,
+                country = :country
+            WHERE id = :id
+        ');
+        $parameters = [
+            'street' => $street,
+            'zip' => $zip,
+            'city' => $city,
+            'country' => $country
+        ];
+        $query->execute($parameters);
+    }
 }
 ?>

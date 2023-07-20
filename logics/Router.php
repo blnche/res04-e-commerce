@@ -29,7 +29,7 @@ function checkRoute(string $route)
 	} elseif ($route === 'account-address-add') {
 		$ac->addUserAdresse();
 	} elseif ($route === 'account-address-edit') {
-
+		$ac->editUserAdresse();
 	} elseif ($route === 'account-edit') {
 		$ac->edit();
 	}
