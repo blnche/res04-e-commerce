@@ -1,5 +1,14 @@
-<section>
-   <h2>Vos informations</h2>
+<aside class="side-bar">
+   <nav>
+      <ul>
+         <li><a href="#informations">Informations</a></li>
+         <li><a href="#adresses">Adresses de livraison</a></li>
+         <li><a href="#commandes">Dernières commandes</a></li>
+      </ul>
+   </nav>
+</aside>
+<section aria-labelledby="t-infos" id="informations">
+   <h2 id="t-infos">Vos informations</h2>
    <form action="?route=account-edit" method="POST">
       <div>
          <div>
@@ -27,8 +36,8 @@
       <!-- manque mécanisme de vérification avec le précédent mot de passe -->
    </form>
 </section>
-<section aria-labelledby="t-adresse">
-   <h2 id="t-adresse">Vos adresses de livraison</h2>
+<section aria-labelledby="t-adresses" id="adresses">
+   <h2 id="t-adresses">Vos adresses de livraison</h2>
    <ul>
       <?php foreach ($this->data['adresses'] as $adresse) { ?>
          <li>
@@ -79,7 +88,7 @@
       </div>
    </form>
 </section>
-<section aria-labelledby="t-commandes">
+<section aria-labelledby="t-commandes" id="commandes">
    <h2 id="t-commandes">Vos dernières commandes</h2>
    <?php if (!$this->data['orders']) { ?>
       <p>Il n'y a rien par ici pour le moment...</p>
