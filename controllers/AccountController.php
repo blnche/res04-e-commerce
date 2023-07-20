@@ -55,21 +55,39 @@ class AccountController extends AbstractController
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
 			$email = $_POST['email'];
-			$pwd = $_POST['password'];
-			$confirm_pwd = $_POST['confirm-password'];
 
-			if ($pwd !== $confirm_pwd) {
-				echo "nope"; // action de guard
-				unset($_POST);
-				return;
+			// ici commence un bloc du bordel qui sert à déterminer si l'utilisateur tente de modifier
+			// son mot de passe, auquel cas, on procède aux vérifications nécessaires, 
+			// sinon le mode passe nest pas modifié
+			$ancient_pwd = $this->userManager->getUserById($id)->getPassword();
+
+			if(isset($_POST['password']) || isset($_POST['new-password'])) {
+				$pwd = $_POST['password'];
+				$new_pwd = $_POST['new-password'];
+				$new_pwd_confirm = $_POST['new-password-confirm'];
+				if(password_verify($pwd,$ancient_pwd)) {
+					echo "nope"; // gestion d'erreurs à implémenter
+					unset($_POST);
+					return;
+				}
+				if($new_pwd !== $new_pwd_confirm) {
+					echo "nope"; // gestion d'erreurs à implémenter
+					unset($_POST);
+					return;
+				}
+				$new_pwd = password_hash($new_pwd, PASSWORD_DEFAULT);
 			}
+			// fin du bloc
 
-			$pwd = password_hash($pwd, PASSWORD_DEFAULT);
+			$new_pwd = $new_pwd ?? $ancient_pwd; 
+			// ^ si un nouveau mot de pase n'a pas été assigné dans le bloc précédent, 
+			// on assigne l'ancien pour ne pas modifier le mot de passe dans la BDD 
+			
 			$user = new User(
 				$first_name,
 				$last_name,
 				$email,
-				$pwd
+				$new_pwd
 			);
 			$user->setId($id);
 			$this->userManager->editUser($user);
